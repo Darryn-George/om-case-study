@@ -1,11 +1,12 @@
 
 
-variable "files" {
-  default = 5
+locals {
+ file_indices = toset(["0", "2", "3", "4"]) # Skipping index 1
 }
 
 resource "local_file" "foo" {
-  count    = var.files
-  content  = "# Some content for file ${count.index}"
-  filename = "file${count.index}.txt"
+  for_each = local.file_indices
+
+  filename = "file${each.key}.txt"
+  content  = "# Some content for file ${each.key}"
 }
