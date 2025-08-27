@@ -10,10 +10,10 @@ terraform state rm 'local_file.foo[1]'
 
 ### Moves the state entries from numeric indices (e.g., [0]) to string indices (e.g., ["0"]).
 ### This is needed when you change your resource definition from a count-based resource to a for_each-based resource using string keys.
-terraform state mv 'local_file.foo[0]' 'local_file.foo["0"]'
-terraform state mv 'local_file.foo[2]' 'local_file.foo["2"]'
-terraform state mv 'local_file.foo[3]' 'local_file.foo["3"]'
-terraform state mv 'local_file.foo[4]' 'local_file.foo["4"]'
+terraform state mv 'local_file.foo[0]' 'local_file.foo["0"]'  
+terraform state mv 'local_file.foo[2]' 'local_file.foo["2"]'  
+terraform state mv 'local_file.foo[3]' 'local_file.foo["3"]'  
+terraform state mv 'local_file.foo[4]' 'local_file.foo["4"]'  
 
 ### Verifies the state after the changes.
 terraform state list | grep 'local_file.foo'
@@ -35,5 +35,5 @@ resource "local_file" "foo" {
 
 4. etc
 
-terraform plan
+terraform plan  
 terraform apply
